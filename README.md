@@ -1,2 +1,2 @@
-# test repository
-This is a test repo
+# ownCloud quickstart repository
+This repo contains the markdown source files for the ownCloud quickstart.
