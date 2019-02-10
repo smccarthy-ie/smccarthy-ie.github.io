@@ -1,15 +1,18 @@
-# ownCloud quickstart
+# ownCloud quickstart (work in progress)
 
-ownCloud is an open source file syncing and sharing software platform. ownCloud enables you to manage your files and data on your own private cloud server, 
-and share them with multiple client devices and users in a safe and secure way.
+ownCloud is client/server software for file syncing and sharing. It enables you to manage data on your own private cloud server, 
+and share with multiple client users and devices in a safe and secure way. Owncloud is available as an on-premises server (physical or virtual 
+appliance) and as a Cloud service. For more details on installation options, see <a href="https://owncloud.org/download/" target="_blank">Download ownCloud</a>.
 
-This quickstart explains how administrators can install an ownCloud server, and how users can connect to an ownCloud server on client devices. 
-
+This quickstart guide explains how administrators can install a free and open source ownCloud server (Community Edition), and how users can connect 
+to an ownCloud server on client devices. For details on how to install an ownCloud server virtual appliance (Enterprise Edition), see 
+<a href="https://doc.owncloud.org/server/10.0/admin_manual/appliance/installation.html" target="_blank">How to Install the Appliance</a>.
 
 ## Install and set up your ownCloud server
-The open source ownCloud server manages your files and data and controls user access. 
+The free and open source ownCloud server manages your files and data and controls user access. 
 
 ### Before you begin
+
 You must ensure that your web server host has the following software installed:
 - Linux or Docker 
 - Apache web server
@@ -62,7 +65,7 @@ Alternatively, on your desktop, you can also open a browser, and enter an ownClo
 
 ### Connect to an ownCloud server on a mobile app client
   1. Download the app from the Google Play Store or Apple App Store.
-  2. Open the app, and enter your server URL address (for example, the following: https://demo.owncloud.org)
+  2. Open the app, and enter your server URL address (for example, https://demo.owncloud.org)
   3. Enter your Username/Password (in this case, demo/demo).
   4. View the data available on the server (for example, Photos or Documents)
   5. Click + to upload a sample photo or file.  
