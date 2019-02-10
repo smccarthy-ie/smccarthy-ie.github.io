@@ -1,8 +1,10 @@
 # ownCloud quickstart (work in progress)
 
-ownCloud is client/server software for file syncing and sharing. It enables you to manage data on your own private cloud server, 
-and share with multiple client users and devices in a safe and secure way. Owncloud is available as an on-premises server (physical or virtual 
-appliance) and as a Cloud service. For more details on installation options, see <a href="https://owncloud.org/download/" target="_blank">Download ownCloud</a>.
+ownCloud is client/server software for file syncing and sharing. It enables you to manage data on your own private cloud server, and share with 
+multiple client users and devices in a safe and secure way. 
+
+Owncloud is available as a server on-premises (Linux, Docker, or virtual appliance), 
+or as a Cloud service. For details on installation options, see <a href="https://owncloud.org/download/" target="_blank">Download ownCloud</a>.
 
 This quickstart guide explains how administrators can install a free and open source ownCloud server (Community Edition), and how users can connect 
 to an ownCloud server on client devices. For details on how to install an ownCloud server virtual appliance (Enterprise Edition), see 
@@ -30,13 +32,19 @@ For details on recommended software versions, see <a href="https://doc.owncloud.
 
 Fore more details, see [installation instructions](https://doc.owncloud.org/server/10.0/admin_manual/installation/). 
 
-### Enable users to connect to the ownCloud server using IP address and port 8080
-You must configure the IP address and port used in your web server's configuration:
-  1. ...
-  2. ...
-  3. ...
+### Enable users to connect to the ownCloud server using custom port and IP address
+By default, ... You can change to a specific IP address and custom port (for example, `8080`) by editing our Apache web server's configuration:
+  1. Edit the `/etc/apache2/ports.conf` file.
+  2. Find the following line:
   
-For more details, see https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#managing-trusted-domains.
+ ```Listen 80```
+  
+  3. Change it to the following: 
+  
+ ```Listen <IP_ADDRESS>:8080```  
+  
+  
+For more details, see https://www.ostechnix.com/how-to-change-apache-ftp-and-ssh-default-port-to-a-custom-port-part-1/
 
 
 ### Add a user account
