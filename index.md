@@ -24,7 +24,7 @@ For details on recommended software versions, see <a href="https://doc.owncloud.
 
 ### Install and configure the ownCloud server
   1. Download the free server sofware from:
-      https://owncloud.org/download/
+      https://owncloud.org/download
   2. Unzip the tar file...
   3. Upload the following file to your web host...
   4. ...
@@ -35,11 +35,11 @@ For more details, see [installation instructions](https://doc.owncloud.org/serve
 ### Enable users to connect using ownCloud server IP address and custom port
 By default, ... You can change to the server IP address and custom port (for example, `8080`) by editing your Apache web server's configuration:
   1. Edit the following file: `/etc/apache2/ports.conf`.
-  2. Find the `Listen 80` line.
+  2. Find the following line: `Listen 80`.
   3. Change it to `Listen <IP_ADDRESS>:8080`  
   
 For more details, see you Apache web server documentation.  
-For more details, see https://www.ostechnix.com/how-to-change-apache-ftp-and-ssh-default-port-to-a-custom-port-part-1/
+For more details, see https://www.ostechnix.com/how-to-change-apache-ftp-and-ssh-default-port-to-a-custom-port-part-1
 
 
 ### Add a user account
@@ -59,7 +59,7 @@ You can connect to an ownCloud server on multiple client devices (for example, m
 
 ### Connect to an ownCloud server on a desktop client
   1. Download the free client software for your platform from 
-     https://owncloud.org/download/
+     https://owncloud.org/download
   2. Run the ownCloud Setup Wizard to install.
   3. Enter the Server Address URL (for example, https://demo.owncloud.org), and click Next.
   4. Enter your Username/Password (in this case, demo/demo), and click Next.
@@ -77,6 +77,7 @@ Alternatively, on your desktop, you can also open a browser, and enter an ownClo
   4. View the data available on the server (for example, Photos or Documents)
   5. Click + to upload a sample photo or file.  
   
-For details on supported client platforms, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
+For details on supported client platforms, 
+see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
 
  
