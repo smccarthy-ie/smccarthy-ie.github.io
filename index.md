@@ -14,7 +14,7 @@ ownCloud is available in the following installation options:
 This quickstart guide explains how administrators can install the open source ownCloud server (Community Edition) on Linux, and how users can connect 
 to an ownCloud server from different client devices. 
 
-## Install and configure your ownCloud server environment
+## Install and configure your ownCloud server
 The free and open source ownCloud server manages your files and data and controls user access. 
 
 ### Before you begin
@@ -57,25 +57,28 @@ cp -r owncloud /var/www
 ```
 Alias /owncloud "/var/www/owncloud/"
 <Directory /var/www/owncloud/>
-   Options +FollowSymlinks
-   AllowOverride All
-   <IfModule mod_dav.c>
-     Dav off
-   </IfModule>
-  SetEnv HOME /var/www/owncloud
-  SetEnv HTTP_HOME /var/www/owncloud
+ Options +FollowSymlinks
+ AllowOverride All
+ <IfModule mod_dav.c>
+  Dav off
+ </IfModule>
+ SetEnv HOME /var/www/owncloud
+ SetEnv HTTP_HOME /var/www/owncloud
 </Directory>
 ```
 3. Create a symlink to `/etc/apache2/sites-enabled`:
 ```
 ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
 ```
-For more details, see 
-<a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#apache-configuration-label" target="_blank">Additional Apache configurations</a>.
+For more details, see: 
+ * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#apache-configuration-label" target="_blank">Additional Apache configurations</a>
+ * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#enable-ssl" target="_blank">Enable SSL</a>
 
 
-### Enable users to connect using ownCloud server IP address and custom port
-By default, users can connect to the ownCloud server running on port `80` by default. You can change this to use the server IP address and custom port (for example, `8080`) by editing your Apache web server's configuration:
+
+### Enable users to connect to the ownCloud server on a custom port
+By default, users connect to the ownCloud server IP address only (for example, http://http://192.0.2.4). You can change this to use the server IP address and a custom port 
+(for example, `http://http://192.0.2.4:8080`) by editing your Apache web server's configuration:
   1. Edit the following file:
 ```
 /etc/apache2/ports.conf
