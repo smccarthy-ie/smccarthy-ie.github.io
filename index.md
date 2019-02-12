@@ -49,11 +49,11 @@ cp -r owncloud /var/www
 ``` 
      
 ### Configure your Apache web server
-1. Create the following file: 
+  1. Create the following file: 
 ```
 /etc/apache2/sites-available/owncloud.conf
 ```
-2. Create the following file: 
+  2. Create the following file: 
 ```
 Alias /owncloud "/var/www/owncloud/"
 <Directory /var/www/owncloud/>
@@ -66,7 +66,7 @@ Alias /owncloud "/var/www/owncloud/"
  SetEnv HTTP_HOME /var/www/owncloud
 </Directory>
 ```
-3. Create a symlink to `/etc/apache2/sites-enabled`:
+  3. Create a symlink to `/etc/apache2/sites-enabled`:
 ```
 ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
 ```
