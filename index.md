@@ -54,18 +54,19 @@ cp -r owncloud /var/www
 /etc/apache2/sites-available/owncloud.conf
 ```
   2. Add the following content: 
-````
-Alias /owncloud "/var/www/owncloud/"
-<Directory /var/www/owncloud/>
-  Options +FollowSymlinks
-  AllowOverride All
- <IfModule mod_dav.c>
-  Dav off
- </IfModule>
- SetEnv HOME /var/www/owncloud
- SetEnv HTTP_HOME /var/www/owncloud
-</Directory>
-```` 
+  ````
+  Alias /owncloud "/var/www/owncloud/"
+  <Directory /var/www/owncloud/>
+   Options +FollowSymlinks
+   AllowOverride All
+   <IfModule mod_dav.c>
+    Dav off
+   </IfModule>
+   SetEnv HOME /var/www/owncloud
+   SetEnv HTTP_HOME /var/www/owncloud
+  </Directory>
+  ```` 
+  
   3. Create a symlink to `/etc/apache2/sites-enabled`:
 ```
 ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
