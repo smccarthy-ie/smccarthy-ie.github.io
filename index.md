@@ -11,7 +11,7 @@ ownCloud is available in the following installation options:
 | Desktop client | MacOS, Windows, or Linux | 
 | Mobile app     | iOS or Android | 
 
-This quickstart guide explains how administrators can install the open source ownCloud server (Community Edition) on Linux, and how users can connect 
+This quickstart explains how administrators can install the open source ownCloud server (Community Edition) on Linux, and how users can connect 
 to an ownCloud server from different client devices. 
 
 ## Install and configure your ownCloud server
@@ -25,25 +25,20 @@ You must ensure that your web server host has the following software installed:
 - Database (for example, MySQL or SQLite)
 - PHP runtime
 
-For example, you can use the following command to install a Linux, Apache, MySQL, and PHP (LAMP) stack:
-```
-sudo apt-get install lamp-server^
-```  
-
 For details on recommended software versions, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
-For guidelines on how to deploy ownCloud in an open source LAMP stack, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/deployment_recommendations.html" target="_blank">Deployment Recommendations</a>. 
+For guidelines on deploying ownCloud in an open source LAMP stack, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/deployment_recommendations.html" target="_blank">Deployment Recommendations</a>. 
 
 ### Install the ownCloud server
-  1. Ensure that all the prerequisites and required packages have been installed for your system. For more details, see:
-    * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#prerequisites-label" target="_blank">Prerequisites</a>
-    * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#install-the-required-packages" target="_blank">Install the Required Packages</a>
+  1. Ensure that all the prerequisites and required packages have been installed for your system:
+   - <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#prerequisites-label" target="_blank">Prerequisites</a>
+   - <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#install-the-required-packages" target="_blank">Install the Required Packages</a>
   2. Download the `.tar` or `.zip` archive of the latest ownCloud server version from https://owncloud.org/download. 
   3. Extract the archive contents on your machine. For example:
 ```
 tar -xjf owncloud-x.y.z.tar.bz2
 unzip owncloud-x.y.z.zip
 ```   
-  4. Copy the `owncloud` directory to the required location for your web server (for example, the Apache root directory):
+  4. Copy the `owncloud` directory to your the Apache root directory:
 ```
 cp -r owncloud /var/www
 ``` 
@@ -55,8 +50,8 @@ cp -r owncloud /var/www
 ```
   2. Add the following content: 
 ```
-    Alias /owncloud "/var/www/owncloud/"
-    <Directory /var/www/owncloud/>
+Alias /owncloud "/var/www/owncloud/"
+<Directory /var/www/owncloud/>
       Options +FollowSymlinks
       AllowOverride All
      <IfModule mod_dav.c>
@@ -64,22 +59,30 @@ cp -r owncloud /var/www
      </IfModule>
      SetEnv HOME /var/www/owncloud
      SetEnv HTTP_HOME /var/www/owncloud
-    </Directory>
+</Directory>
 ```     
   3. Create a symlink to `/etc/apache2/sites-enabled`:
 ```
 ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
 ```
-
+  4. Restart your Apache web server when finished your configuration. For example:
+```  
+sudo service apache2 restart 
+```    
 For more details, see: 
  * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#apache-configuration-label" target="_blank">Additional Apache configurations</a>
  * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#enable-ssl" target="_blank">Enable SSL</a>
 
+ 
+### Run the ownCloud installation wizard
+After restarting Apache, you must complete your installation by running the ownCloud graphical installation wizard or by using the `occ` command. 
+
+To use the graphical Installation Wizard, see The Installation Wizard. To use occ, see Command Line Installation. 
 
 
 ### Enable users to connect to the ownCloud server on a custom port
-By default, users connect to the ownCloud server IP address only (for example, `http://192.0.2.4`). You can change this to use the server IP address and a custom port 
-(for example, `http://http://192.0.2.4:8080`) by editing your Apache web server's configuration:
+By default, users connect to the ownCloud server IP address only. You can change this to use the server IP address and a custom port by editing your Apache web 
+server's configuration:
   1. Edit the following file:
 ```
 /etc/apache2/ports.conf
@@ -98,11 +101,10 @@ sudo service apache2 restart
 ```    
   5. Enter the server IP address and port in your browser to test the connection. For example: 
 ```  
-  http://192.0.2.4:8080
+http://192.0.2.4:8080
 ```    
   
 For more details, see your Apache web server documentation.  
-For more details, see https://www.ostechnix.com/how-to-change-apache-ftp-and-ssh-default-port-to-a-custom-port-part-1
 
 
 ### Add a user account
