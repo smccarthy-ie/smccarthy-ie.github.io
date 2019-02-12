@@ -1,15 +1,20 @@
 # ownCloud quickstart (work in progress)
 
 ownCloud is client/server software for file syncing and sharing. It enables you to manage data on your own private cloud server, and share with 
-multiple client users and devices in a safe and secure way. 
+multiple client users on multiple devices in a safe and secure way. 
 
-ownCloud is available as a server on-premises (Linux, Docker, or virtual appliance), or as a hosted Cloud service. ownCloud client options include desktop 
-(MacOS, Windows, or Linux), or mobile app (iOS or Android). For more details, see <a href="https://owncloud.org/download/" target="_blank">installation options</a>.
+ownCloud is available in the following installation options: 
 
-This quickstart guide explains how administrators can install the free and open source ownCloud server (Community Edition) on Linux, and how users can connect 
-to an ownCloud server on client devices. 
+| Component      | Installation Option | 
+| -------------- | ------------------- |
+| Server         | Linux, Docker, virtual appliance, or hosted service |
+| Desktop client | MacOS, Windows, or Linux | 
+| Mobile app     | iOS or Android | 
 
-## Install and set up your ownCloud server
+This quickstart guide explains how administrators can install the open source ownCloud server (Community Edition) on Linux, and how users can connect 
+to an ownCloud server from different client devices. 
+
+## Install and configure your ownCloud server environment
 The free and open source ownCloud server manages your files and data and controls user access. 
 
 ### Before you begin
@@ -17,28 +22,82 @@ The free and open source ownCloud server manages your files and data and control
 You must ensure that your web server host has the following software installed:
 - Linux or Docker 
 - Apache web server
-- PHP runtime
 - Database (for example, MySQL or SQLite)
+- PHP runtime
+
+For example, you can use the following command to install a Linux, Apache, MySQL, and PHP (LAMP) stack:
+```
+sudo apt-get install lamp-server^
+```  
 
 For details on recommended software versions, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
+For guidelines on how to deploy ownCloud in an open source LAMP stack, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/deployment_recommendations.html" target="_blank">Deployment Recommendations</a>. 
 
-### Install and configure the ownCloud server
-  1. Download the free server sofware from:
-      https://owncloud.org/download
-  2. Unzip the tar file...
-  3. Upload the following file to your web host...
-  4. ...
+### Install the ownCloud server
+  1. Ensure that all the prerequisites and required packages have been installed for your system. For more details, see:
+    * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#prerequisites-label" target="_blank">Prerequisites</a>
+    * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#install-the-required-packages" target="_blank">Install the Required Packages</a>
+  2. Download the `.tar` or `.zip` archive of the latest ownCloud server version from https://owncloud.org/download. 
+  3. Extract the archive contents on your machine. For example:
+```
+tar -xjf owncloud-x.y.z.tar.bz2
+unzip owncloud-x.y.z.zip
+```   
+  4. Copy the `owncloud` directory to the required location for your web server (for example, the Apache root directory):
+```
+cp -r owncloud /var/www
+``` 
+     
+### Configure your Apache web server
+1. Create the following file: 
+```
+/etc/apache2/sites-available/owncloud.conf
+```
+2. Create the following file: 
+```
+Alias /owncloud "/var/www/owncloud/"
+<Directory /var/www/owncloud/>
+   Options +FollowSymlinks
+   AllowOverride All
+   <IfModule mod_dav.c>
+     Dav off
+   </IfModule>
+  SetEnv HOME /var/www/owncloud
+  SetEnv HTTP_HOME /var/www/owncloud
+</Directory>
+```
+3. Create a symlink to `/etc/apache2/sites-enabled`:
+```
+ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
+```
+For more details, see 
+<a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#apache-configuration-label" target="_blank">Additional Apache configurations</a>.
 
-
-For more details, see [installation instructions](https://doc.owncloud.org/server/10.0/admin_manual/installation/). 
 
 ### Enable users to connect using ownCloud server IP address and custom port
-By default, ... You can change to the server IP address and custom port (for example, `8080`) by editing your Apache web server's configuration:
-  1. Edit the following file: `/etc/apache2/ports.conf`.
-  2. Find the following line: `Listen 80`.
-  3. Change it to `Listen <IP_ADDRESS>:8080`  
+By default, users can connect to the ownCloud server running on port `80` by default. You can change this to use the server IP address and custom port (for example, `8080`) by editing your Apache web server's configuration:
+  1. Edit the following file:
+```
+/etc/apache2/ports.conf
+```  
+  2. Find the following line:
+```
+Listen 80
+```  
+  3. Change it to use the IP address and port. For example:  
+```
+Listen 192.0.2.4:8080
+```
+  4. Restart your Apache web server. For example:
+```  
+sudo service apache2 restart 
+```    
+  5. Enter the server IP address and port in your browser to test the connection. For example: 
+```  
+  http://192.0.2.4:8080
+```    
   
-For more details, see you Apache web server documentation.  
+For more details, see your Apache web server documentation.  
 For more details, see https://www.ostechnix.com/how-to-change-apache-ftp-and-ssh-default-port-to-a-custom-port-part-1
 
 
@@ -61,10 +120,10 @@ You can connect to an ownCloud server on multiple client devices (for example, m
   1. Download the free client software for your platform from 
      https://owncloud.org/download
   2. Run the ownCloud Setup Wizard to install.
-  3. Enter the Server Address URL (for example, https://demo.owncloud.org), and click Next.
-  4. Enter your Username/Password (in this case, demo/demo), and click Next.
+  3. Enter the **Server Address** URL (for example, https://demo.owncloud.org), and click **Next**.
+  4. Enter your **Username**/**Password** (in this case, **demo**/**demo**), and click **Next**.
   5. Click Connect and wait for a few seconds for your files to sync.
-  6. Click the ellipsis button on the right to manage your files (for example, select Open folder, create a new Music folder, and select Force sync now).
+  6. Click the ellipsis button on the right to manage your files (for example, select **Open folder**, create a new Music folder, and select **Force sync now**).
   
   
 Alternatively, on your desktop, you can also open a browser, and enter an ownCloud server URL address to connect. 
@@ -73,9 +132,9 @@ Alternatively, on your desktop, you can also open a browser, and enter an ownClo
 ### Connect to an ownCloud server on a mobile app client
   1. Download the app from the Google Play Store or Apple App Store.
   2. Open the app, and enter your server URL address (for example, https://demo.owncloud.org)
-  3. Enter your Username/Password (in this case, demo/demo).
+  3. Enter your **Username**/**Password** (in this case, **demo**/**demo**).
   4. View the data available on the server (for example, Photos or Documents)
-  5. Click + to upload a sample photo or file.  
+  5. Click **+** to upload a sample photo or file.  
   
 For details on supported client platforms, 
 see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
