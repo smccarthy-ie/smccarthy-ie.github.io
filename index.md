@@ -55,8 +55,16 @@ cp -r owncloud /var/www
 ```
   2. Add the following content: 
 ```
-tar -xjf owncloud-x.y.z.tar.bz2
-unzip owncloud-x.y.z.zip
+    Alias /owncloud "/var/www/owncloud/"
+    <Directory /var/www/owncloud/>
+      Options +FollowSymlinks
+      AllowOverride All
+     <IfModule mod_dav.c>
+      Dav off
+     </IfModule>
+     SetEnv HOME /var/www/owncloud
+     SetEnv HTTP_HOME /var/www/owncloud
+    </Directory>
 ```     
   3. Create a symlink to `/etc/apache2/sites-enabled`:
 ```
