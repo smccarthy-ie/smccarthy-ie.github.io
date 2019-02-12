@@ -54,19 +54,10 @@ cp -r owncloud /var/www
 /etc/apache2/sites-available/owncloud.conf
 ```
   2. Add the following content: 
-  ````
-  Alias /owncloud "/var/www/owncloud/"
-  <Directory /var/www/owncloud/>
-   Options +FollowSymlinks
-   AllowOverride All
-   <IfModule mod_dav.c>
-    Dav off
-   </IfModule>
-   SetEnv HOME /var/www/owncloud
-   SetEnv HTTP_HOME /var/www/owncloud
-  </Directory>
-  ```` 
-  
+```
+tar -xjf owncloud-x.y.z.tar.bz2
+unzip owncloud-x.y.z.zip
+```     
   3. Create a symlink to `/etc/apache2/sites-enabled`:
 ```
 ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
@@ -79,7 +70,7 @@ For more details, see:
 
 
 ### Enable users to connect to the ownCloud server on a custom port
-By default, users connect to the ownCloud server IP address only (for example, http://http://192.0.2.4). You can change this to use the server IP address and a custom port 
+By default, users connect to the ownCloud server IP address only (for example, `http://192.0.2.4`). You can change this to use the server IP address and a custom port 
 (for example, `http://http://192.0.2.4:8080`) by editing your Apache web server's configuration:
   1. Edit the following file:
 ```
