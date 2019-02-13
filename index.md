@@ -51,15 +51,15 @@ cp -r owncloud /var/www
   2. Add the following content: 
 ````  
     Alias /owncloud "/var/www/owncloud/"
-       <Directory /var/www/owncloud/>
-         Options +FollowSymlinks
-         AllowOverride All
-        <IfModule mod_dav.c>
+        <Directory /var/www/owncloud/>
+          Options +FollowSymlinks
+          AllowOverride All
+         <IfModule mod_dav.c>
           Dav off
         </IfModule>
-        SetEnv HOME /var/www/owncloud
-        SetEnv HTTP_HOME /var/www/owncloud
-       </Directory>     
+         SetEnv HOME /var/www/owncloud
+         SetEnv HTTP_HOME /var/www/owncloud
+        </Directory>     
 ````	 
   3. Create the following symlink:
 ```
@@ -91,12 +91,13 @@ see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/comm
 
 
 ### Enable users to connect to the ownCloud server on a custom port
-By default, users connect to the ownCloud server IP address. You can change this to use a custom port by editing your Apache web server's configuration:
+By default, users connect to the ownCloud server IP address using the default port (`80`). You can change this to use a specific custom port (`8080`) by 
+editing your Apache web server configuration:
   1. Edit the following file:
 ```
 /etc/apache2/ports.conf
 ```  
-  2. Change the first line (`Listen 80`) to use the port `8080`. For example:  
+  2. Change the first line to:  
 ```
 Listen 8080
 ```
@@ -104,9 +105,9 @@ Listen 8080
 ```
 /etc/apache2/sites-enabled/000-default.conf
 ```  
-  4. Change the first line (`<VirtualHost *:80>`) to use the port `8080`. For example:  
+  4. Change the first line to:  
 ```
-<VirtualHost *: 8080>
+    <VirtualHost *: 8080>
 ```
   5. Restart your Apache web server. For example:
 ```  
@@ -116,9 +117,6 @@ sudo service apache2 restart
 ```  
 http://192.0.2.4:8080
 ```    
-
-_**Note**: On _
-
   
 For more details, see your Apache HTTP Server documentation.  
 
@@ -129,9 +127,6 @@ When logged in as administrator, you can add new user accounts on the **User man
   2. Assign groups memberships (optional).
   3. Click **Create** to add the user account.
   
-_**Note**: If you selected **Send email to new user** in the control panel in the left sidebar, you can enter the new user’s email address to 
-automatically send an email with login details._
-
 For more details, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/configuration/user/user_configuration.html" target="_blank">User management</a>.  
 
 
