@@ -49,18 +49,17 @@ cp -r owncloud /var/www
 /etc/apache2/sites-available/owncloud.conf
 ```
   2. Add the following content: 
-```
-Alias /owncloud "/var/www/owncloud/"
-<Directory /var/www/owncloud/>
-      Options +FollowSymlinks
-      AllowOverride All
-     <IfModule mod_dav.c>
-      Dav off
-     </IfModule>
-     SetEnv HOME /var/www/owncloud
-     SetEnv HTTP_HOME /var/www/owncloud
-</Directory>
-```     
+  
+    Alias /owncloud "/var/www/owncloud/"
+     <Directory /var/www/owncloud/>
+       Options +FollowSymlinks
+       AllowOverride All
+      <IfModule mod_dav.c>
+        Dav off
+      </IfModule>
+      SetEnv HOME /var/www/owncloud
+      SetEnv HTTP_HOME /var/www/owncloud
+     </Directory>     
   3. Create a symlink to `/etc/apache2/sites-enabled`:
 ```
 ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
@@ -74,7 +73,7 @@ For more details, see:
  * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#enable-ssl" target="_blank">Enable SSL</a>
 
  
-### Run the ownCloud installation wizard
+### Run the ownCloud installation wizard or command
 After restarting Apache, you must complete your installation by running the ownCloud graphical installation wizard or by using the `occ` command. 
 
 To use the graphical Installation Wizard, see The Installation Wizard. To use occ, see Command Line Installation. 
