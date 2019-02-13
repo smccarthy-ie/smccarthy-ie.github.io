@@ -2,7 +2,7 @@
 
 - [Introduction](#introduction)
 - [Install and configure your ownCloud server](#install_server)
-- [Connect to an ownCloud server from a client device](#connect_client)
+- [Connect to an ownCloud server from client devices](#connect_client)
 
 ## Introduction <a name="introduction"></a>
 ownCloud is client–server software for file syncing and sharing. ownCloud enables you to manage data on your own private cloud server, and share with 
@@ -85,13 +85,13 @@ After restarting Apache, you must complete your installation by running the ownC
 
 To run the graphical installation wizard:
  1. Enter the following URL in your browser: <a href="http://localhost/owncloud" target="_blank">http://localhost/owncloud</a>. 
- 2. To create an admin account, enter the username and password you wish to use.
+ 2. To create an admin account, enter the username and password that you wish to use.
  2. Click **Finish setup**.
  
 For details on database options and post-installation steps, 
 see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/installation_wizard.html" target="_blank">The Installation Wizard</a>. 
 
-Alternatively, you can use the `occ` command to install on the command line or in scripts. For details, see 
+Alternatively, you can use the `occ` command to install on the command line or using scripts. For details, see 
 <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/command_line_installation.html" target="_blank">Command Line Installation</a>.
 
 
@@ -138,8 +138,8 @@ can enter the user email address._
 For more details, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/configuration/user/user_configuration.html" target="_blank">User management</a>.  
 
 
-## Connect to an ownCloud server from a client device <a name="connect_client">
-Users can connect to an ownCloud server from multiple client devices (for example, desktop client, mobile app, or browser). 
+## Connect to an ownCloud server from client devices <a name="connect_client">
+Users can connect to an ownCloud server from different client devices (for example, desktop client, mobile app, or browser). 
 
 ### Connect to an ownCloud server from a desktop client
   1. Download the free client software for your platform from <a href="https://owncloud.org/download" target="_blank">https://owncloud.org/download</a>.
@@ -151,7 +151,7 @@ Users can connect to an ownCloud server from multiple client devices (for exampl
 
 ![images/owncloud_win_desktop_client.png](images/owncloud_win_desktop_client.png "ownClound Windows desktop client")  
 
-### Connect to an ownCloud server from a mobile app client
+### Connect to an ownCloud server from a mobile app
   1. Download the app from the Google Play Store or Apple App Store.
   2. Open the app, and enter your server URL (for example, <a href="https://demo.owncloud.org" target="_blank">https://demo.owncloud.org</a>).
   3. Enter your username/password (in this case, **demo**/**demo**).
