@@ -1,5 +1,10 @@
 # ownCloud quickstart (work in progress)
 
+- [Introduction](#introduction)
+- [Install and configure your ownCloud server](#install_server)
+- [Connect to an ownCloud server from a client device](#connect_client)
+
+## Introduction <a name="introduction"></a>
 ownCloud is client/server software for file syncing and sharing. ownCloud enables you to manage data on your own private cloud server, and share with 
 multiple client users and devices in a safe and secure way. 
 
@@ -14,7 +19,7 @@ ownCloud is available in the following installation options:
 This quickstart explains how administrators can install the open source ownCloud server (Community Edition), and how users can connect 
 to an ownCloud server from different client devices. 
 
-## Install and configure your ownCloud server
+## Install and configure your ownCloud server <a name="install_server"></a>
 The free and open source ownCloud server manages your files and data and controls user access. 
 
 ### Before you begin
@@ -132,7 +137,7 @@ _**Note**: To enable automatic notification email, you must select **Send email 
 For more details, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/configuration/user/user_configuration.html" target="_blank">User management</a>.  
 
 
-## Connect to an ownCloud server from a client device
+## Connect to an ownCloud server from a client device <a name="connect_client">
 Users can connect to an ownCloud server from multiple client devices (for example, desktop client, browser, or mobile app). 
 
 ### Connect to an ownCloud server on a desktop client
