@@ -37,7 +37,7 @@ For guidelines on deploying ownCloud in an open source LAMP stack, see <a href="
   1. Ensure that all the required packages have been installed for your system. For details, see:
    - <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#prerequisites-label" target="_blank">Prerequisites</a>
    - <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#install-the-required-packages" target="_blank">Install the Required Packages</a>
-  2. Download the `.tar` or `.zip` archive for the latest ownCloud server: <a href="https://owncloud.org/download" target="_blank">https://owncloud.org/download</a>.
+  2. Download the `.tar` or `.zip` archive for the latest ownCloud server from <a href="https://owncloud.org/download" target="_blank">https://owncloud.org/download</a>.
   3. Extract the archive contents on your host. For example:
 ```
 tar -xjf owncloud-x.y.z.tar.bz2
@@ -60,7 +60,7 @@ cp -r owncloud /var/www
           Options +FollowSymlinks
           AllowOverride All
           <IfModule mod_dav.c>
-          Dav off
+           Dav off
           </IfModule>
           SetEnv HOME /var/www/owncloud
           SetEnv HTTP_HOME /var/www/owncloud
@@ -71,7 +71,7 @@ cp -r owncloud /var/www
 ln -s /etc/apache2/sites-available/owncloud.conf
  /etc/apache2/sites-enabled/owncloud.conf
 ```
-  4. Restart your Apache web server when finished your configuration. For example:
+  4. Restart your Apache web server when finished configuration. For example:
 ```  
 sudo service apache2 restart 
 ```    
@@ -81,7 +81,7 @@ For more details, see:
 
  
 ### Run the ownCloud installation wizard or command
-After restarting Apache, you must complete your installation by running the ownCloud graphical installation wizard or using the `occ` command. 
+After restarting Apache, you must complete your installation by running the ownCloud graphical installation wizard or the `occ` command. 
 
 To run the graphical installation wizard:
  1. Enter the following URL in your browser: <a href="http://localhost/owncloud" target="_blank">http://localhost/owncloud</a>. 
@@ -160,9 +160,10 @@ Users can connect to an ownCloud server from multiple client devices (for exampl
 
 ![images/owncoud_android_client.png](images/owncoud_android_client.png "ownClound Android mobile client")    
 
-Alternatively, on your desktop or mobile device, you can open a browser, and connect to an ownCloud server URL (for example, https://demo.owncloud.org). 
+Alternatively, on your desktop or mobile device, you can open a browser, and connect to an ownCloud server URL (for example, 
+<a href="https://demo.owncloud.org" target="_blank">https://demo.owncloud.org</a>). 
 
-For more details on supported client versions, 
-see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
+For more details on supported client versions, see 
+<a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
 
  
