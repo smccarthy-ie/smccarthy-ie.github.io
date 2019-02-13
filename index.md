@@ -1,11 +1,11 @@
-# ownCloud quickstart (work in progress)
+# ownCloud quickstart
 
 - [Introduction](#introduction)
 - [Install and configure your ownCloud server](#install_server)
 - [Connect to an ownCloud server from a client device](#connect_client)
 
 ## Introduction <a name="introduction"></a>
-ownCloud is client/server software for file syncing and sharing. ownCloud enables you to manage data on your own private cloud server, and share with 
+ownCloud is client–server software for file syncing and sharing. ownCloud enables you to manage data on your own private cloud server, and share with 
 multiple client users and devices in a safe and secure way. 
 
 ownCloud is available in the following installation options: 
@@ -34,16 +34,16 @@ For details on recommended versions, see <a href="https://doc.owncloud.org/serve
 For guidelines on deploying ownCloud in an open source LAMP stack, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/deployment_recommendations.html" target="_blank">Deployment Recommendations</a>. 
 
 ### Install the ownCloud server
-  1. Ensure that all the required packages have been installed for your system:
+  1. Ensure that all the required packages have been installed for your system. For details, see:
    - <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#prerequisites-label" target="_blank">Prerequisites</a>
    - <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#install-the-required-packages" target="_blank">Install the Required Packages</a>
-  2. Download the `.tar` or `.zip` archive for the latest ownCloud server from: <a href="https://owncloud.org/download" target="_blank">https://owncloud.org/download</a>.
+  2. Download the `.tar` or `.zip` archive for the latest ownCloud server: <a href="https://owncloud.org/download" target="_blank">https://owncloud.org/download</a>.
   3. Extract the archive contents on your host. For example:
 ```
 tar -xjf owncloud-x.y.z.tar.bz2
 unzip owncloud-x.y.z.zip
 ```   
-  4. Copy the `owncloud` directory to the Apache root directory. For example:
+  4. Copy the `owncloud` directory to your Apache root directory. For example:
 ```
 cp -r owncloud /var/www
 ``` 
@@ -91,12 +91,12 @@ To run the graphical installation wizard:
 For details on database options and post-installation steps, 
 see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/installation_wizard.html" target="_blank">The Installation Wizard</a>. 
 
-Alternatively, you can use the `occ` command to install on the command line or in scripts (see 
-see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/command_line_installation.html" target="_blank">Command Line Installation</a>).
+Alternatively, you can use the `occ` command to install on the command line or in scripts. For details, see 
+<a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/command_line_installation.html" target="_blank">Command Line Installation</a>.
 
 
 ### Enable users to connect to the ownCloud server on a custom port
-By default, users connect to the ownCloud server IP address using the default port (`80`). You can use a custom port (`8080`) by editing your Apache 
+By default, users connect to the ownCloud server IP address using the default port (`80`). You can use a custom port (for example, `8080`) by editing your Apache 
 web server configuration:
   1. Edit the following file:
 ```
@@ -132,36 +132,37 @@ When logged in as administrator, you can add new user accounts on the **User man
   2. Add group memberships for the user (optional).
   3. Click **Create** to add the new account.
   
-_**Note**: To enable automatic notification email, you must select **Send email to new user** in the control panel in the left sidebar before you can enter the user email address._  
-  
+_**Note**: To enable automatic notification email, you must select **Send email to new user** in the control panel in the left sidebar before you 
+can enter the user email address._  
+
 For more details, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/configuration/user/user_configuration.html" target="_blank">User management</a>.  
 
 
 ## Connect to an ownCloud server from a client device <a name="connect_client">
-Users can connect to an ownCloud server from multiple client devices (for example, desktop client, browser, or mobile app). 
+Users can connect to an ownCloud server from multiple client devices (for example, desktop client, mobile app, or browser). 
 
-### Connect to an ownCloud server on a desktop client
+### Connect to an ownCloud server from a desktop client
   1. Download the free client software for your platform from <a href="https://owncloud.org/download" target="_blank">https://owncloud.org/download</a>.
   2. Run the **ownCloud Setup** wizard to install.
-  3. Enter the **Server Address** URL (for example, <a href="https://demo.owncloud.org" target="_blank">https://demo.owncloud.org</a>), and click **Next**.
-  4. Enter your username/password (in this case, **demo**/**demo**), and click **Next**.
-  5. Click **Connect** and wait for a few seconds for your files to sync.
+  3. Enter the **Server Address** URL (for example, <a href="https://demo.owncloud.org" target="_blank">https://demo.owncloud.org</a>).
+  4. Enter your username/password (in this case, **demo**/**demo**).
+  5. Click **Connect**, and wait for your files to sync.
   6. Click the ellipsis button on the right to manage your files (for example, select **Open folder**, create a new **Music** folder, and select **Force sync now**).
 
 ![images/owncloud_win_desktop_client.png](images/owncloud_win_desktop_client.png "ownClound Windows desktop client")  
-  
-Alternatively, on your desktop, you can also open a browser, and connect to an ownCloud server URL address. 
 
-### Connect to an ownCloud server on a mobile app client
+### Connect to an ownCloud server from a mobile app client
   1. Download the app from the Google Play Store or Apple App Store.
-  2. Open the app, and enter your server URL address (for example, <a href="https://demo.owncloud.org" target="_blank">https://demo.owncloud.org</a>)
+  2. Open the app, and enter your server URL (for example, <a href="https://demo.owncloud.org" target="_blank">https://demo.owncloud.org</a>).
   3. Enter your username/password (in this case, **demo**/**demo**).
-  4. View the data available on the server (for example, **Photos** or **Documents**)
+  4. View the data available on the server (for example, **Photos** or **Documents**).
   5. Click **+** to upload a photo or file.  
 
 ![images/owncoud_android_client.png](images/owncoud_android_client.png "ownClound Android mobile client")    
-  
-For details on supported client versions, 
+
+Alternatively, on your desktop or mobile device, you can open a browser, and connect to an ownCloud server URL (for example, https://demo.owncloud.org). 
+
+For more details on supported client versions, 
 see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
 
  
