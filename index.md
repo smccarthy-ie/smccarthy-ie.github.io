@@ -1,7 +1,7 @@
 # ownCloud quickstart (work in progress)
 
 ownCloud is client/server software for file syncing and sharing. It enables you to manage data on your own private cloud server, and share with 
-multiple client users on multiple devices in a safe and secure way. 
+multiple client users and devices in a safe and secure way. 
 
 ownCloud is available in the following installation options: 
 
@@ -11,7 +11,7 @@ ownCloud is available in the following installation options:
 | Desktop client | MacOS, Windows, or Linux | 
 | Mobile app     | iOS or Android | 
 
-This quickstart explains how administrators can install the open source ownCloud server (Community Edition) on Linux, and how users can connect 
+This quickstart explains how administrators can install the open source ownCloud server (Community Edition), and how users can connect 
 to an ownCloud server from different client devices. 
 
 ## Install and configure your ownCloud server
@@ -25,20 +25,20 @@ You must ensure that your web server host has the following software installed:
 - Database (for example, MySQL or SQLite)
 - PHP runtime
 
-For details on recommended software versions, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
+For details on recommended versions, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
 For guidelines on deploying ownCloud in an open source LAMP stack, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/deployment_recommendations.html" target="_blank">Deployment Recommendations</a>. 
 
 ### Install the ownCloud server
-  1. Ensure that all the prerequisites and required packages have been installed for your system:
+  1. Ensure that all the required packages have been installed for your system:
    - <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#prerequisites-label" target="_blank">Prerequisites</a>
    - <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#install-the-required-packages" target="_blank">Install the Required Packages</a>
-  2. Download the `.tar` or `.zip` archive of the latest ownCloud server version from https://owncloud.org/download. 
-  3. Extract the archive contents on your machine. For example:
+  2. Download the `.tar` or `.zip` archive for the latest ownCloud server from: <a href="https://owncloud.org/download" target="_blank">https://owncloud.org/download</a>.
+  3. Extract the archive contents on your host. For example:
 ```
 tar -xjf owncloud-x.y.z.tar.bz2
 unzip owncloud-x.y.z.zip
 ```   
-  4. Copy the `owncloud` directory to your the Apache root directory:
+  4. Copy the `owncloud` directory to your the Apache root directory. For example:
 ```
 cp -r owncloud /var/www
 ``` 
@@ -51,19 +51,20 @@ cp -r owncloud /var/www
   2. Add the following content: 
 ````  
     Alias /owncloud "/var/www/owncloud/"
-     <Directory /var/www/owncloud/>
-       Options +FollowSymlinks
-       AllowOverride All
-      <IfModule mod_dav.c>
-        Dav off
-      </IfModule>
-      SetEnv HOME /var/www/owncloud
-      SetEnv HTTP_HOME /var/www/owncloud
-     </Directory>     
+       <Directory /var/www/owncloud/>
+         Options +FollowSymlinks
+         AllowOverride All
+        <IfModule mod_dav.c>
+          Dav off
+        </IfModule>
+        SetEnv HOME /var/www/owncloud
+        SetEnv HTTP_HOME /var/www/owncloud
+       </Directory>     
 ````	 
-  3. Create a symlink to `/etc/apache2/sites-enabled`:
+  3. Create the following symlink:
 ```
-ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/owncloud.conf
+ln -s /etc/apache2/sites-available/owncloud.conf
+ /etc/apache2/sites-enabled/owncloud.conf
 ```
   4. Restart your Apache web server when finished your configuration. For example:
 ```  
@@ -75,49 +76,55 @@ For more details, see:
 
  
 ### Run the ownCloud installation wizard or command
-After restarting Apache, you must complete your installation by running the ownCloud graphical installation wizard or by using the `occ` command. 
+After restarting Apache, you must complete your installation by running the ownCloud graphical installation wizard or using the `occ` command. 
 
-To use the graphical installation wizard:
- 1. Enter the following URL in your browser: http://localhost/owncloud.
- 2. To create an admin account, enter an administrator username and password.
+To run the graphical installation wizard:
+ 1. Enter the following URL in your browser: <a href="http://localhost/owncloud" target="_blank">http://localhost/owncloud</a>. 
+ 2. To create an admin account, enter the administrator username and password you wish to use.
  2. Click **Finish setup**.
  
 For details on database options and post-installation steps, 
-see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#enable-ssl" target="_blank">The Installation Wizard</a>. 
+see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/installation_wizard.html" target="_blank">The Installation Wizard</a>. 
 
-The `occ` command is useful for scripted operations and for administrators who prefer using the command line instead of a GUI. For details, 
-see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#enable-ssl" target="_blank">Command Line Installation</a>.
+Alternatively, you can use the `occ` command to install on the command line or in scripts. For details, 
+see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/command_line_installation.html" target="_blank">Command Line Installation</a>.
 
 
 ### Enable users to connect to the ownCloud server on a custom port
-By default, users connect to the ownCloud server IP address only. You can change this to use the server IP address and a custom port by editing your Apache web 
-server's configuration:
+By default, users connect to the ownCloud server IP address. You can change this to use a custom port by editing your Apache web server's configuration:
   1. Edit the following file:
 ```
 /etc/apache2/ports.conf
 ```  
-  2. Find the following line:
+  2. Change the first line (`Listen 80`) to use the port `8080`. For example:  
 ```
-Listen 80
+Listen 8080
+```
+  3. Edit the following file:
+```
+/etc/apache2/sites-enabled/000-default.conf
 ```  
-  3. Change it to use the IP address and port. For example:  
+  4. Change the first line (`<VirtualHost *:80>`) to use the port `8080`. For example:  
 ```
-Listen 192.0.2.4:8080
+<VirtualHost *: 8080>
 ```
-  4. Restart your Apache web server. For example:
+  5. Restart your Apache web server. For example:
 ```  
 sudo service apache2 restart 
 ```    
-  5. Enter the server IP address and port in your browser to test the connection. For example: 
+  6. Enter the server IP address and port in your browser to test the connection. For example: 
 ```  
 http://192.0.2.4:8080
 ```    
+
+_**Note**: On _
+
   
 For more details, see your Apache HTTP Server documentation.  
 
 
 ### Add a user account
-When logged in as administrator, you can add new user accounts on the **User management** page in the ownCloud Web UI:
+When logged in as administrator, you can add new user accounts on the **User management** page in the ownCloud web UI:
   1. Enter the new user name and initial password.
   2. Assign groups memberships (optional).
   3. Click **Create** to add the user account.
@@ -151,7 +158,7 @@ Alternatively, on your desktop, you can also open a browser, and enter an ownClo
   4. View the data available on the server (for example, Photos or Documents)
   5. Click **+** to upload a sample photo or file.  
   
-For details on supported client platforms, 
+For details on supported client versions, 
 see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
 
  
