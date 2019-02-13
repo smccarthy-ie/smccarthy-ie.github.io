@@ -1,6 +1,6 @@
 # ownCloud quickstart (work in progress)
 
-ownCloud is client/server software for file syncing and sharing. It enables you to manage data on your own private cloud server, and share with 
+ownCloud is client/server software for file syncing and sharing. ownCloud enables you to manage data on your own private cloud server, and share with 
 multiple client users and devices in a safe and secure way. 
 
 ownCloud is available in the following installation options: 
@@ -38,7 +38,7 @@ For guidelines on deploying ownCloud in an open source LAMP stack, see <a href="
 tar -xjf owncloud-x.y.z.tar.bz2
 unzip owncloud-x.y.z.zip
 ```   
-  4. Copy the `owncloud` directory to your the Apache root directory. For example:
+  4. Copy the `owncloud` directory to the Apache root directory. For example:
 ```
 cp -r owncloud /var/www
 ``` 
@@ -51,15 +51,15 @@ cp -r owncloud /var/www
   2. Add the following content: 
 ````  
     Alias /owncloud "/var/www/owncloud/"
-        <Directory /var/www/owncloud/>
+         <Directory /var/www/owncloud/>
           Options +FollowSymlinks
           AllowOverride All
-         <IfModule mod_dav.c>
+          <IfModule mod_dav.c>
           Dav off
-        </IfModule>
-         SetEnv HOME /var/www/owncloud
-         SetEnv HTTP_HOME /var/www/owncloud
-        </Directory>     
+          </IfModule>
+          SetEnv HOME /var/www/owncloud
+          SetEnv HTTP_HOME /var/www/owncloud
+         </Directory>     
 ````	 
   3. Create the following symlink:
 ```
@@ -71,8 +71,8 @@ ln -s /etc/apache2/sites-available/owncloud.conf
 sudo service apache2 restart 
 ```    
 For more details, see: 
- * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#apache-configuration-label" target="_blank">Additional Apache configurations</a>
- * <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#enable-ssl" target="_blank">Enable SSL</a>
+ - <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#apache-configuration-label" target="_blank">Additional Apache Configurations</a>
+ - <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html#enable-ssl" target="_blank">Enable SSL</a>
 
  
 ### Run the ownCloud installation wizard or command
@@ -80,19 +80,19 @@ After restarting Apache, you must complete your installation by running the ownC
 
 To run the graphical installation wizard:
  1. Enter the following URL in your browser: <a href="http://localhost/owncloud" target="_blank">http://localhost/owncloud</a>. 
- 2. To create an admin account, enter the administrator username and password you wish to use.
+ 2. To create an admin account, enter the username and password you wish to use.
  2. Click **Finish setup**.
  
 For details on database options and post-installation steps, 
 see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/installation_wizard.html" target="_blank">The Installation Wizard</a>. 
 
-Alternatively, you can use the `occ` command to install on the command line or in scripts. For details, 
-see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/command_line_installation.html" target="_blank">Command Line Installation</a>.
+Alternatively, you can use the `occ` command to install on the command line or in scripts (see 
+see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/command_line_installation.html" target="_blank">Command Line Installation</a>).
 
 
 ### Enable users to connect to the ownCloud server on a custom port
-By default, users connect to the ownCloud server IP address using the default port (`80`). You can change this to use a specific custom port (`8080`) by 
-editing your Apache web server configuration:
+By default, users connect to the ownCloud server IP address using the default port (`80`). You can use a custom port (`8080`) by editing your Apache 
+web server configuration:
   1. Edit the following file:
 ```
 /etc/apache2/ports.conf
@@ -113,7 +113,7 @@ Listen 8080
 ```  
 sudo service apache2 restart 
 ```    
-  6. Enter the server IP address and port in your browser to test the connection. For example: 
+  6. Test the connection in your browser. For example: 
 ```  
 http://192.0.2.4:8080
 ```    
@@ -123,35 +123,38 @@ For more details, see your Apache HTTP Server documentation.
 
 ### Add a user account
 When logged in as administrator, you can add new user accounts on the **User management** page in the ownCloud web UI:
-  1. Enter the new user name and initial password.
-  2. Assign groups memberships (optional).
-  3. Click **Create** to add the user account.
+  1. Enter the user name and initial password.
+  2. Add group memberships for the user (optional).
+  3. Click **Create** to add the new account.
+  
+_**Note**: To enable automatic notification email, you must select **Send email to new user** in the control panel in the left sidebar before you can enter the user email address._  
   
 For more details, see <a href="https://doc.owncloud.org/server/10.0/admin_manual/configuration/user/user_configuration.html" target="_blank">User management</a>.  
 
 
 ## Connect to an ownCloud server from a client device
-You can connect to an ownCloud server on multiple client devices (for example, mobile app, desktop client, or browser). 
+Users can connect to an ownCloud server from multiple client devices (for example, desktop client, browser, or mobile app). 
 
 ### Connect to an ownCloud server on a desktop client
-  1. Download the free client software for your platform from 
-     https://owncloud.org/download
-  2. Run the ownCloud Setup Wizard to install.
-  3. Enter the **Server Address** URL (for example, https://demo.owncloud.org), and click **Next**.
-  4. Enter your **Username**/**Password** (in this case, **demo**/**demo**), and click **Next**.
-  5. Click Connect and wait for a few seconds for your files to sync.
-  6. Click the ellipsis button on the right to manage your files (for example, select **Open folder**, create a new Music folder, and select **Force sync now**).
-  
-  
-Alternatively, on your desktop, you can also open a browser, and enter an ownCloud server URL address to connect. 
+  1. Download the free client software for your platform from <a href="https://owncloud.org/download" target="_blank">https://owncloud.org/download</a>.
+  2. Run the **ownCloud Setup** wizard to install.
+  3. Enter the **Server Address** URL (for example, <a href="https://demo.owncloud.org" target="_blank">https://demo.owncloud.org</a>), and click **Next**.
+  4. Enter your username/password (in this case, **demo**/**demo**), and click **Next**.
+  5. Click **Connect** and wait for a few seconds for your files to sync.
+  6. Click the ellipsis button on the right to manage your files (for example, select **Open folder**, create a new **Music** folder, and select **Force sync now**).
 
+![images/owncloud_win_desktop_client.png](images/owncloud_win_desktop_client.png "ownClound Windows desktop client")  
+  
+Alternatively, on your desktop, you can also open a browser, and connect to an ownCloud server URL address. 
 
 ### Connect to an ownCloud server on a mobile app client
   1. Download the app from the Google Play Store or Apple App Store.
-  2. Open the app, and enter your server URL address (for example, https://demo.owncloud.org)
-  3. Enter your **Username**/**Password** (in this case, **demo**/**demo**).
-  4. View the data available on the server (for example, Photos or Documents)
-  5. Click **+** to upload a sample photo or file.  
+  2. Open the app, and enter your server URL address (for example, <a href="https://demo.owncloud.org" target="_blank">https://demo.owncloud.org</a>)
+  3. Enter your username/password (in this case, **demo**/**demo**).
+  4. View the data available on the server (for example, **Photos** or **Documents**)
+  5. Click **+** to upload a photo or file.  
+
+![images/owncoud_android_client.png](images/owncoud_android_client.png "ownClound Android mobile client")    
   
 For details on supported client versions, 
 see <a href="https://doc.owncloud.org/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options" target="_blank">System Requirements</a>.
